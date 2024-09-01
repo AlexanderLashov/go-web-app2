@@ -44,6 +44,15 @@ jobs:
         run: |
           kubectl rollout status deployment/go-web-app --namespace default
 
+      - name: Describe the Deployment
+        run: |
+          kubectl describe deployment go-web-app --namespace default
+
       - name: Verify the deployment with Minikube
         run: |
           minikube service go-web-app --namespace default --url
+
+      - name: Curl the service
+        run: |
+          SERVICE_URL=$(minikube service go-web-app --namespace default --url)
+          curl $SERVICE_URL
