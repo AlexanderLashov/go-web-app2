@@ -1,6 +1,6 @@
 # Go Web App 2
 
-This repository is responsible for building and deploying a Docker image for the Go web application from the [go-web-app](https://github.com/AlexanderLashov/go-web-app2) repository. The image is then deployed to a Kubernetes cluster using Minikube and Helm charts.
+This repository is responsible for building and deploying a Docker image for the Go web application from the [go-web-app](https://github.com/AlexanderLashov/go-web-app) repository. The image is then deployed to a Kubernetes cluster using Minikube and Helm charts.
 
 ## Workflows
 
