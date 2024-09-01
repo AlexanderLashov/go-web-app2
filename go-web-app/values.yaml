@@ -1,0 +1,49 @@
+replicaCount: 1
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+image:
+  repository: alexanderlashov/go-web-app
+  pullPolicy: Always
+  tag: "latest"
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  ingressClassName: nginx 
+  hosts:
+    - host: your-domain.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+  tls:
+    - secretName: your-tls-secret
+      hosts:
+        - your-domain.com
+
+serviceAccount:
+  create: true
+  name: ""
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
